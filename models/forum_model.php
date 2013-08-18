@@ -6,6 +6,7 @@ class Forum_model extends CI_Model {
       parent::__construct();
    }
    
+<<<<<<< HEAD
    /**
     * Fórum lista
     *
@@ -14,11 +15,19 @@ class Forum_model extends CI_Model {
    
       if($lang == "")       
         $lang = Settings::get_lang();
+=======
+   public function get_forums_list($where="") {
+   
+      $lang = Settings::get_lang();
+>>>>>>> 4ae6aa2d69d20f8634497f4a14fd3fa10765db2a
       
       $this->db->select("
             fp.*,
             fpl.*,
+<<<<<<< HEAD
             UNIX_TIMESTAMP( fp.last_date ) AS last_time
+=======
+>>>>>>> 4ae6aa2d69d20f8634497f4a14fd3fa10765db2a
          ")->from("forums AS fp");
          
       $this->db->join("forums_lang AS fpl", "fp.id_forum = fpl.id_forum AND fpl.lang = '$lang'");
@@ -29,6 +38,7 @@ class Forum_model extends CI_Model {
          }
       }
       
+<<<<<<< HEAD
       $user = (object) User()->get_user();
       
       if(count( (array) $user) > 0) {
@@ -177,4 +187,9 @@ class Forum_model extends CI_Model {
        
    }
    
+=======
+      return $this->db->get();   
+   }
+   
+>>>>>>> 4ae6aa2d69d20f8634497f4a14fd3fa10765db2a
 }
